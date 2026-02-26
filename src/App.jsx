@@ -1,3 +1,5 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+
 //importo le pagine
 import HomePage from "./pages/HomePage"
 import MoviePage from "./pages/MoviePage"

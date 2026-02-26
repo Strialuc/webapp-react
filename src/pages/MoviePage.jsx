@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom"
 import CardReview from "../components/CardReview"
 
-const endpoint = "http://localhost:3000/api/books/";
+const endpoint = "http://localhost:3000/api/movies";
 
 
 const MoviePage = () => {
@@ -20,8 +20,8 @@ const MoviePage = () => {
     const [movie, setMovie] = useState({});
 
     // funzione che gestisce la chiamata alla rotta show di BE
-    const fetchBook = () => {
-        axios.get(endpoint + id)
+    const fetchMovie = () => {
+        axios.get(`${endpoint}/${id}`)
             .then(res => { setMovie(res.data); })
             .catch(err => {
                 console.log(err);
@@ -30,7 +30,7 @@ const MoviePage = () => {
     }
 
     // richiamo funzione di fetch al montaggio della page
-    useEffect(fetchBook, []);
+    useEffect(fetchMovie, []);
 
     //funzione render reviews
     const renderReviews = () => {

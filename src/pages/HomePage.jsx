@@ -10,14 +10,14 @@ const endpoint = "http://localhost:3000/api/movies";
 
 const HomePage = () => {
 
-    //imposo variabile di stato
+    //imposto variabile di stato
     const [movies, setMovies] = useState([]);
 
     //funzione che gestisce chiamata a BE
     const fetchMovie = () => {
         axios.get(endpoint)
             .then(res => {
-                setBooks(res.data);
+                setMovies(res.data);
             })
             .catch(err => {
                 console.log(err);
@@ -29,15 +29,17 @@ const HomePage = () => {
     const renderMovies = () => {
         return movies.map(movie => {
             return (
-                <div className="col" key={movie.id}>
-                    <CardMovie movieProp={movie} />
-                </div>
+
+                <CardMovie key={movie.id} movieProp={movie} />
+
             )
         })
     }
 
-    //richamo funz di fetch al montaggio home page
-    useEffect(fetchMovie, []);
+    //richiamo funz di fetch al montaggio home page
+    useEffect(() => {
+        fetchMovies();
+    }, []);
 
     return (
         <>
